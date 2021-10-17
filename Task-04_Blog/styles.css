@@ -1,0 +1,58 @@
+li {
+    list-style-type: none
+}
+header {
+    text-align: center;
+    background-color: yellow;
+}
+.container {
+    position: absolute;
+}
+.LEFT_menu {
+    width: 20%;
+    float: left;
+    top: 40px;
+}
+.MIDDLE_content {
+    margin: 0 20% 0 20%;
+    width: 60%;
+    border-left-color: green;
+    border-left-style: solid;
+    padding-left: 10px;
+}
+.RIGHT_last_posts {
+    width: 10%;
+    float: right;
+    border-style: dashed;
+    border-color: green;
+    border-width: 2px;
+    text-align: right;
+}
+.RIGHT_last_posts h2,
+.RIGHT_last_posts li,
+.RIGHT_last_posts [type="checkbox"] {
+    display: none;
+}
+.RIGHT_last_posts [type="checkbox"]:checked ~ h2 {
+    display: block;
+}
+.RIGHT_last_posts [type="checkbox"]:checked ~ li {
+    display: block;
+}
+.RIGHT_last_posts h2 {
+    margin-right: 3%;
+}
+.RIGHT_last_posts li {
+    margin-right: 3%;
+}
+a[href]:visited {
+    color: chartreuse;
+}
+a[href]:hover {
+    color: red;
+    text-decoration: underline;
+}
+footer {
+    padding-top: 20px;
+    text-align: center;
+}
