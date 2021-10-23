@@ -1,0 +1,82 @@
+body {
+    background-color: gainsboro;
+    font-family: Georgia, serif;
+    color: rgb(95, 94, 94);
+}
+header {
+    border-bottom: 3px solid rgb(216, 159, 83);
+    padding-bottom: 120px;
+}
+.header-blocks, .main-blocks {
+    float: left;
+}
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+#photo {
+    width: 15%;
+}
+#name {
+    color: #000;
+    width: 65%;
+    padding-top: 10px;
+    text-align: left;
+    line-height: 10px;
+}
+#name :last-child {
+    font-weight: normal;
+}
+#contacts {
+    text-align: left;
+    line-height: 5px;
+    padding-top: 25px;
+    width: 20%;
+}
+.data, .qualification {
+    font-style: italic;
+}
+article h2 {
+    color: rgb(216, 159, 83);
+    font-style: italic;
+    line-height: 0;
+}
+article h3 {
+    line-height: 0;
+}
+section {
+    padding: 30px;
+    border-bottom: 2px solid rgb(199, 198, 198);    
+}
+section[id="personal-profile"] {
+    padding-bottom: 280px;
+}
+section[id="work-experience"] {
+    padding-bottom: 1000px;
+}
+section[id="skills"] {
+    padding-bottom: 180px;
+}
+#heading {
+    width: 30%;
+    display: inline-block;
+}
+#text {
+    width: 70%;
+}
+#hard-skills {
+    float: left;
+    width: 50%;
+}
+#soft-skills {
+    float: left;
+    width: 50%;
+}
+#education {
+    border: none;
+    padding-bottom: 250px;
+}
