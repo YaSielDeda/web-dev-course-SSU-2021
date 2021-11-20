@@ -1,0 +1,14 @@
+body {
+    background-color: gainsboro;
+    font-family: Georgia, serif;
+    color: rgb(95, 94, 94);
+}
+header {
+    border-bottom: 3px solid rgb(216, 159, 83);
+    text-align: center;
+}
+article h2 {
+    color: rgb(216, 159, 83);
+    font-style: italic;
+    line-height: 0;
+}

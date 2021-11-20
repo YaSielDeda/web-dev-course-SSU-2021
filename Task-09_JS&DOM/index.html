@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random Calculator</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+    </head>
+    <body>
+        <header>
+            <h1>My Random Calculator</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Подсчёт гласных</h2>
+                Функция принимает на вход строку произвольных символов и возвращает число английских гласных в этой строке. Гласным считаются буквы a, e, i, o, u (но не y). <p>
+                <form id="vowelsForm">
+                    Ввод:
+                    <input type="button" id="clearVowelsInput" value="X">
+                    <input type="text" id="vowelsCounterInput" />
+                    Вывод:
+                    <input type="button" id="clearVowelsOutput" value="X">
+                    <input type="text" id="vowelsCounterOutput" readonly/>
+                    <input type="submit">
+                </form>   
+            </section>
+            <section>
+                <h2>Проверка на изограмму</h2>
+                Изограмма – это слово, в котором не повторяется ни одна буква. Функция проверяет, является ли слово изограммой. Регистр букв не учитывается. <p>
+                <form id="isogramForm">
+                    Ввод:
+                    <input type="button" id="clearIsogramInput" value="X">
+                    <input type="text" id="isogramInput" />
+                    Вывод:
+                    <input type="button" id="clearIsogramOutput" value="X">
+                    <input type="text" id="isogramOutput" readonly/>
+                    <input type="submit">
+                </form> 
+            </section>
+            <section>
+                <h2>Генератор паролей</h2>
+                nuff said<p>
+                <form id="passwordForm">
+                    Вывод:
+                    <input type="button" id="clearPasswordField" value="X">
+                    <input type="text" id="passwordOutput" readonly/>
+                    <input type="submit">
+                </form> 
+            </section>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
