@@ -8,7 +8,7 @@ function IsIsogram(str) {
   let arrCheck = [];
 
   for (let i = 0; i < arr.length; i++) {
-    if (arrCheck.includes(arr[i])){
+    if (arrCheck.includes(arr[i])) {
         return false;
     }
     arrCheck.push(arr[i]);
@@ -25,29 +25,25 @@ function PasswordGenerator() {
   let haveUpper = false;
   let haveLower = false;
 
-  while (haveDigit != true && haveUpper != true && haveLower != true)
-  {
+  while (haveDigit != true && haveUpper != true && haveLower != true) {
     res = [];
     haveDigit = false;
     haveUpper = false;
     haveLower = false;
     for (let i = 0; i < length; i++) {
         let currentChar = symbols[Math.floor(Math.random() * symbols.length)];
-        if (!isNaN(parseInt(currentChar)))
-        {
+        if (!isNaN(parseInt(currentChar))) {
             haveDigit = true;
             res.push(currentChar);
             continue;
         }
-        if (Math.round(Math.random()) == 1)
-        {
+        if (Math.round(Math.random()) == 1) {
             currentChar = currentChar.toUpperCase();
             haveUpper = true;
             res.push(currentChar);
             continue;
         }
-        else
-        {
+        else {
             haveLower = true;
             res.push(currentChar);
         }
@@ -56,7 +52,7 @@ function PasswordGenerator() {
   return res.join('');
 };
 
-function Validation(str){
+function Validation(str) {
   return str.replace(/[.,\/#@"№?+<>\|!$%\^&\*;:{}=\-_`~()123456789]/g,"");
 };
 
@@ -69,7 +65,7 @@ document.getElementById('vowelsCounterInput').onchange = function() {
 
 let vowelsForm = document.getElementById('vowelsForm');
 
-vowelsForm.addEventListener('submit', function(event){
+vowelsForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   let word = document.getElementById('vowelsCounterInput').value;
@@ -77,12 +73,12 @@ vowelsForm.addEventListener('submit', function(event){
 });
 
 let vowelsFormClearInput = document.getElementById('clearVowelsInput');
-vowelsFormClearInput.addEventListener('click', function(event){
+vowelsFormClearInput.addEventListener('click', function(event) {
   document.getElementById('vowelsCounterInput').value = "";
 });
 
 let vowelsFormClearOutput = document.getElementById('clearVowelsOutput');
-vowelsFormClearOutput.addEventListener('click', function(event){
+vowelsFormClearOutput.addEventListener('click', function(event) {
   document.getElementById('vowelsCounterOutput').value = "";
 });
 
@@ -95,7 +91,7 @@ document.getElementById('isogramInput').onchange = function() {
 
 let isogrammForm = document.getElementById('isogramForm');
 
-isogrammForm.addEventListener('submit', function(event){
+isogrammForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   let word = document.getElementById('isogramInput').value;
@@ -103,12 +99,12 @@ isogrammForm.addEventListener('submit', function(event){
 });
 
 let isogrammFormClearInput = document.getElementById('clearIsogramInput');
-isogrammFormClearInput.addEventListener('click', function(event){
+isogrammFormClearInput.addEventListener('click', function(event) {
   document.getElementById('isogramInput').value = "";
 });
 
 let isogrammFormClearOutput = document.getElementById('clearIsogramOutput');
-isogrammFormClearOutput.addEventListener('click', function(event){
+isogrammFormClearOutput.addEventListener('click', function(event) {
   document.getElementById('isogramOutput').value = "";
 });
 
@@ -116,13 +112,13 @@ isogrammFormClearOutput.addEventListener('click', function(event){
 
 let passwordForm = document.getElementById('passwordForm');
 
-passwordForm.addEventListener('submit', function(event){
+passwordForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   document.getElementById('passwordOutput').value = PasswordGenerator();
 });
 
 let passwordFormClearFieldButton = document.getElementById('clearPasswordField');
-passwordFormClearFieldButton.addEventListener('click', function(event){
+passwordFormClearFieldButton.addEventListener('click', function(event) {
   document.getElementById('passwordOutput').value = "";
 });
