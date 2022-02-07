@@ -1,6 +1,6 @@
 # **Doodle Jump**
 [Game at Appstore](https://apps.apple.com/us/app/doodle-jump/id307727765)
-![Doodle jump header](https://yandex.ru/images/search?from=tabbar&text=doodle%20jump&pos=8&img_url=https%3A%2F%2Ftitel-kulturmagazin.net%2Fwp-content%2Fuploads%2FDoodlejump.jpg&rpt=simage)
+![Doodle jump header](https://ru.wikipedia.org/wiki/Doodle_Jump#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Doodle_Jump.png)
 ### **Summary**
 Doodle Jump is a platforming video game developed and published by Croatian studio Lima Sky, for Windows Phone, iPhone OS, BlackBerry, Android, Java Mobile (J2ME), Nokia Symbian, and Xbox 360 for the Kinect platform. It was released worldwide for iPhone OS on March 15, 2009, and was later released for Android and Blackberry on March 2, 2010, Symbian on May 1, 2010, Windows Phone 7 on June 1, 2011, and August 21, 2013, on Windows Phone 8. It was released for the iPad on September 1, 2011. Since its release, the game has been generally well received. The game is currently available on nine platforms.
 
