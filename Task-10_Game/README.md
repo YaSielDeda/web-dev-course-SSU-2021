@@ -1,6 +1,5 @@
 # **Doodle Jump**
 [Game at Appstore](https://apps.apple.com/us/app/doodle-jump/id307727765)
-![Doodle jump header](https://ru.wikipedia.org/wiki/Doodle_Jump#/media/%D0%A4%D0%B0%D0%B9%D0%BB:Doodle_Jump.png)
 ### **Summary**
 Doodle Jump is a platforming video game developed and published by Croatian studio Lima Sky, for Windows Phone, iPhone OS, BlackBerry, Android, Java Mobile (J2ME), Nokia Symbian, and Xbox 360 for the Kinect platform. It was released worldwide for iPhone OS on March 15, 2009, and was later released for Android and Blackberry on March 2, 2010, Symbian on May 1, 2010, Windows Phone 7 on June 1, 2011, and August 21, 2013, on Windows Phone 8. It was released for the iPad on September 1, 2011. Since its release, the game has been generally well received. The game is currently available on nine platforms.
 
@@ -11,30 +10,25 @@ Doodle Jump was renowned for its selling rate by App Store standards, which coun
 ## **Game Entities**
 
 ### *Doodler*
-![Doodler](https://yandex.ru/images/search?from=tabbar&text=doodle%20jump&pos=0&img_url=https%3A%2F%2Fwww.gamingnexus.com%2FImages%2FNews%2Fwmuzon30080%2F7.jpg&rpt=simage)
-Main character of this game, which player takes control. It's always jumping, and can shoot balls.
+Main character of the game, which player takes control. It's always jumping, and can shoot balls.
 
 ### *Platforms*
-![Platforms](https://yandex.ru/images/search?text=doodle%20jump%20platform&from=tabbar&pos=1&img_url=https%3A%2F%2Fde-academic.com%2Fpictures%2Fdewiki%2F68%2FDoodle_Platforms.png&rpt=simage)
 It's a only solid sufrace in game, which doodler can use to climb higher. This game will be contains at least 3 platform types from the original game:
 * [ ] **_Default_** (green) platform - Doodler can jump on it endlessly.
 * [ ] **_Moving_** (blue) platform - This type of platforms moves horrizontally.
 * [ ] **_Fragile_** (white) platfrom - It's crushes as doodler is stepping on it.
 
 ### *Monsters*
-![Monsters](https://yandex.ru/images/search?text=doodle%20jump%20monsters&from=tabbar&pos=0&img_url=https%3A%2F%2F149353146.v2.pressablecdn.com%2Fwp-content%2Fuploads%2F2013%2F03%2F12335-2.jpg&rpt=simage)
 It's a doodler enemies, upon contact with them doodler falls and game over then, so you need to beware of them. Some of monsters are static and just stay at the one point, some of them are dynamic and can move through game field. Also, some of monsters can try to attack doodler, they also can shoot as doodler, as for example.
 * [ ] **_Static_** monsters. :guardsman:
 * [ ] **_Moving_** monsters. :runner:
 
 ### *Obstacles*
-![Obstacles](https://yandex.ru/images/search?text=doodle%20jump%20ufo&from=tabbar&pos=1&img_url=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FDUyN3olWAAEJjLt.jpg&rpt=simage)
 It's a type of game objects, which also like monsters is hostile to Doodler, but unlike monsters, obstacles can't be shoot by doodler, which means player must avoid of them at any costs. The game is also will over when doodler is contact with any of obstacles. This game will be contains at least 2 obstacles from the original game:
 * [ ] **_UFO_** :o:
 * [ ] **_Black hole_** :black_circle:
 
 ### *Bonuses*
-![Bonuses](https://yandex.ru/images/search?text=doodle%20jump%20bonuses&from=tabbar&pos=4&img_url=https%3A%2F%2Ftablet-news.net%2Fwp-content%2Fuploads%2F2011%2F10%2Fnyall97802_doodlejump.jpg&rpt=simage)
 It's a type of game objects, which gives temporary advantages to Doodler. This game will be contains at least 3 obstacles from the original game:
 * [ ] **_Bubble_** :large_blue_circle: - Makes Doodler invincible for a short time
 * [ ] **_Helicopter hat_** :helicopter: - It gives Doodler to fly up to 100 points
