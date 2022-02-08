@@ -36,7 +36,7 @@ It's a type of game objects, which gives temporary advantages to Doodler. This g
 
 ## **Game rules**
 Player takes control over Doodler. The Doodler is always jumping, so player need to jump on platforms, collect bonuses, and avoid of obstacles and monsters. The main goal of game is climb to platforms as high as you can. Game has no time limit, so player can try his best as much, as he can. 
-[ ] (Optional feature) Game field contains coins spreaded over it, so player can collect them, to spend at the game store and buy new skins for Doodler.
+* [ ] (Optional feature) Game field contains coins spreaded over it, so player can collect them, to spend at the game store and buy new skins for Doodler.
 
 ## **Victory criteria**
 Assuming that fact, that the game doesn't have a finish, the game goes on endlessly, while player don't fall lower than lowest platform at the game field, or if player touch obstacle or monster.
