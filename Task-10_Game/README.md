@@ -53,6 +53,7 @@ The game control is processing by keyboard arrows to move and mouse left button 
 * *ECMAScript ES6 / ECMAScript 2016(ES7)*
 * *SASS/PostCSS*
 * *Babel 7*
+* *Jest*
 
 ## **Project structure**
 * *ASS/PostCSS files are located under src/scss/*
