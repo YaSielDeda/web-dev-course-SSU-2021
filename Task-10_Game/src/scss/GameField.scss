@@ -1,0 +1,14 @@
+body {
+    background-image: url("/src/images/content/background.jpg");
+}
+
+canvas {
+    background: url('/src/images/content/game field.png') 0 0/100% 100% no-repeat;
+    display: block;
+    margin: 0 auto;
+}
+
+// Hide vertical scroll bar
+html { 
+    overflow-y: hidden;
+}
