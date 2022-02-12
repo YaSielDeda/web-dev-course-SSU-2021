@@ -4,11 +4,15 @@ let doodler = GenerateDoodler();
 
 let platforms = GenerateFirstFiveDefaultPlatforms();
 
-function Jump5Times (){
-    for (let i = 0; i < 5; i++){
-        doodler.jump();
-        doodler.fall(platforms);
-    }
-}
+requestAnimationFrame(tick);
 
-Jump5Times();
+function tick() {
+    requestAnimationFrame(tick);
+
+    // platforms.forEach(element => {
+    //     element.drawPlatform();
+    // });
+
+    doodler.jump();
+    doodler.fall(platforms);
+};

@@ -1,4 +1,4 @@
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from '../../BrowserFeatures/GameField.js';
+import { DOODLER_HEIGHT, DOODLER_WIDTH, JUMP_HEIGHT, CANVAS_WIDTH, CANVAS_HEIGHT } from '../../constants.js';
 import {MovingGameObject} from'../Abstract/MovingGameObject.js';
 import { Point } from '../Abstract/Point.js';
 
@@ -6,7 +6,6 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
 export class Doodler extends MovingGameObject {
-    #jumpHeight = 150;
     constructor() {
         let point = new Point(CANVAS_WIDTH / 2, 50) // Default spawn point
         super(point);
@@ -14,8 +13,9 @@ export class Doodler extends MovingGameObject {
         console.log(`doodler spawned at the point (${this.CenterPoint.x}: ${this.CenterPoint.y})`);
     }
     jump() {
-        for (let i = 0; i < this.#jumpHeight; i++){
+        for (let i = 0; i < JUMP_HEIGHT; i++){
             super.moveUp();
+            super.clear();
             this.#drawDoodler();
         }
 
@@ -35,6 +35,7 @@ export class Doodler extends MovingGameObject {
             });
 
             super.moveDown();
+            super.clear();
             this.#drawDoodler();
 
             if(isOnSurface)
@@ -49,12 +50,8 @@ export class Doodler extends MovingGameObject {
 
     // }
     #drawDoodler() {
-        let doodlerWidth = 60;
-        let doodlerHeight = 80;
-
-        ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-        ctx.fillStyle = "rgb(200,0,0)";
-        ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, doodlerWidth, doodlerHeight);
+        ctx.beginPath();
+        ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, DOODLER_WIDTH, DOODLER_HEIGHT);
+        ctx.fillStyle = "red";
     }
 }

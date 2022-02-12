@@ -1,7 +1,7 @@
 import { Doodler } from "../Entities/MovableObjects/Doodler";
 import { Point } from "../Entities/Abstract/Point";
-import { CANVAS_WIDTH } from "../BrowserFeatures/GameField";
 import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/DefaultPlatform";
+import { CANVAS_WIDTH } from "../constants";
 // import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
 // import { FragilePlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
 
