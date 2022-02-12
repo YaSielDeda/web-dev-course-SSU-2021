@@ -1,6 +1,6 @@
 import { AbstractGameObject } from "./AbstractGameObject";
 
-export class MovingGameObject extends AbstractGameObject {
+export class AbstractMovingGameObject extends AbstractGameObject {
   constructor(CenterPoint) {
     super(CenterPoint);
   }

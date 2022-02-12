@@ -19,11 +19,8 @@ export class AbstractPlatform extends AbstractGameObject {
         }
     }
     drawPlatform() {
-        super.clear();
-
         ctx.beginPath();
+        ctx.fillStyle = "green";
         ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
-        ctx.fillStyle = "blue";
-        ctx.fill();
     }
 }
