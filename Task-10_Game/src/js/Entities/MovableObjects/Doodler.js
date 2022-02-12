@@ -1,5 +1,5 @@
 import { DOODLER_HEIGHT, DOODLER_WIDTH, JUMP_HEIGHT, CANVAS_WIDTH, CANVAS_HEIGHT } from '../../constants.js';
-import {AbstractMovingGameObject} from'../Abstract/AbstractMovingGameObject.js';
+import { AbstractMovingGameObject } from'../Abstract/AbstractMovingGameObject.js';
 import { Point } from '../Abstract/Point.js';
 import { DoodlerStates } from '/src/js/Entities/Abstract/Enums/DoodlerStates.js';
 

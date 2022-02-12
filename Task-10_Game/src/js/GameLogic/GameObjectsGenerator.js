@@ -1,7 +1,7 @@
 import { Doodler } from "../Entities/MovableObjects/Doodler";
 import { Point } from "../Entities/Abstract/Point";
 import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/DefaultPlatform";
-import { CANVAS_WIDTH } from "../constants";
+import { CANVAS_WIDTH, PLATFORM_WIDTH } from "../constants";
 // import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
 // import { FragilePlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
 
@@ -14,11 +14,11 @@ export function GenerateFirstFiveDefaultPlatforms() {
     
     let platforms = [];
 
-    let firstPlatform = new DefaultPlatform(new Point(CANVAS_WIDTH / 2, 40)); // Platform under doodler;
+    let firstPlatform = new DefaultPlatform(new Point(CANVAS_WIDTH / 2, 50)); // Platform under doodler;
     platforms.push(firstPlatform);
 
     for (let i = 1; i < 5; i++) {
-        let centerPoint = new Point(getRandomArbitrary(0, CANVAS_WIDTH), distanceBetweenPlatforms * i);
+        let centerPoint = new Point(getRandomArbitrary(0, CANVAS_WIDTH), distanceBetweenPlatforms * i + 50);
 
         let platform = new DefaultPlatform(centerPoint);
         platforms.push(platform);

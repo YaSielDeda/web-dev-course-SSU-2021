@@ -6,21 +6,16 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
 export class AbstractPlatform extends AbstractGameObject {
-    arr = [];
+    LeftBorder;
+    RightBorder;
     constructor(CenterPoint) {
         super(CenterPoint);
-        this.#fillArr();
-    }
-    #fillArr() {
-        let startValue = this.CenterPoint.x - PLATFORM_WIDTH / 2;
-
-        for (let i = 0; i < PLATFORM_WIDTH; i++) {
-            this.arr[i] = new Point(startValue + i, this.CenterPoint.y);
-        }
+        this.LeftBorder = this.CenterPoint.x - PLATFORM_WIDTH / 2;
+        this.RightBorder = this.CenterPoint.x + PLATFORM_WIDTH / 2;
     }
     drawPlatform() {
         ctx.beginPath();
         ctx.fillStyle = "green";
-        ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
+        ctx.fillRect (this.CenterPoint.x - PLATFORM_WIDTH / 2, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
     }
 }

@@ -3,24 +3,22 @@ import { AbstractState } from "../../../Entities/Abstract/AbstractState";
 import { DoodlerStates } from "../../../Entities/Abstract/Enums/DoodlerStates";
 
 export class Fall extends AbstractState {
-    #platforms;
+    platforms;
     constructor(doodler, platforms) {
         super(doodler);
-        this.#platforms = platforms;
+        this.platforms = platforms;
     }
     doNow() {
-        this.abstractGameObject.fall(this.#platforms);
+        this.abstractGameObject.fall(this.platforms);
         this.#doNext();
     }
     #doNext() {
         let isOnSurface = false;
 
-        this.#platforms.forEach(platform => {
-            for (let j = 0; j < platform.arr.length; j++){
-                
-                if(platform.arr[j].x == this.abstractGameObject.CenterPoint.x && platform.arr[j].y == this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT){
+        this.platforms.forEach(platform => {
+            if (platform.LeftBorder <= this.abstractGameObject.CenterPoint.x && platform.RightBorder >= this.abstractGameObject.CenterPoint.x) {
+                if (platform.CenterPoint.y == this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT){
                     isOnSurface = true;
-                    break;
                 }
             }
         });
