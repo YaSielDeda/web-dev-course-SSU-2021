@@ -1,6 +1,6 @@
-import { GameObject } from "./GameObject";
+import { AbstractGameObject } from "./AbstractGameObject";
 
-export class MovingGameObject extends GameObject {
+export class AbstractMovingGameObject extends AbstractGameObject {
   constructor(CenterPoint) {
     super(CenterPoint);
   }
@@ -11,9 +11,9 @@ export class MovingGameObject extends GameObject {
     this.CenterPoint.x++;
   }
   moveUp() {
-    this.CenterPoint.y++;
+    this.CenterPoint.y += 1;
   }
   moveDown() {
-    this.CenterPoint.y--;
+    this.CenterPoint.y -= 1;
   }
 }
