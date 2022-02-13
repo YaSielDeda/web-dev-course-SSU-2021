@@ -9,6 +9,8 @@ let doodler = GenerateDoodler();
 
 let platforms = GenerateFirstFiveDefaultPlatforms();
 
+let dodlerStateMachine = new DoodlerStateMachine();
+
 requestAnimationFrame(tick);
 
 function tick() {
@@ -18,8 +20,7 @@ function tick() {
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     /* OBJECTS POSITIONS AT CANVAS UPDATING */
-    let doodlerStateMachine = new DoodlerStateMachine(doodler, platforms);
-    doodlerStateMachine.DoCurrentStateLogic();
+    dodlerStateMachine.DoCurrentStateLogic(doodler, platforms)
 
     /* OBJECTS RENDERING */
     platforms.forEach(element => {

@@ -9,7 +9,7 @@ export class Fall extends AbstractState {
         this.platforms = platforms;
     }
     doNow() {
-        this.abstractGameObject.fall(this.platforms);
+        this.abstractGameObject.moveDown(this.platforms);
         this.#doNext();
     }
     #doNext() {
