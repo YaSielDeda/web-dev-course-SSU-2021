@@ -10,3 +10,4 @@ export const DOODLER_HEIGHT = 80;
 /* Platform constants */
 export const PLATFORM_WIDTH = 300;
 export const PLATFORM_HEIGHT = 40;
+export const DISTANCE_BETWEEN_PLATFORMS = 120;

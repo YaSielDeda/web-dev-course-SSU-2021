@@ -1,24 +1,12 @@
-import { CANVAS_WIDTH } from '../../../BrowserFeatures/GameField';
+import { CANVAS_WIDTH } from '../../../constants';
 import { AbstractPlatform } from '../../Abstract/AbstractPlatform';
+import { MovingPlatformStates } from 'C:/Users/bereg/Documents/web-dev-course-SSU-2021/Task-10_Game/src/js/Entities/Abstract/Enums/MovingPlatformStates.js';
 
 export class MovingPlatform extends AbstractPlatform {
+    state;
+    color = 'blue';
     constructor(CenterPoint) {
         super(CenterPoint);
-    }
-    moveLeft() {
-        while(this.arr[0] != 0) {
-            arr.forEach(element => {
-                element.x--;
-            });
-            super.drawPlatform();
-        }
-    }
-    moveRight() {
-        while(this.arr[-1] != CANVAS_WIDTH) {
-            arr.forEach(element => {
-                element.x++;
-            });
-            super.drawPlatform();
-        }
+        this.state = MovingPlatformStates.MoveLeft;
     }
 }

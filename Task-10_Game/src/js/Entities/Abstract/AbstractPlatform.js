@@ -1,6 +1,5 @@
-import { PLATFORM_HEIGHT, PLATFORM_WIDTH, CANVAS_HEIGHT } from '../../constants.js';
+import { PLATFORM_HEIGHT, PLATFORM_WIDTH, CANVAS_HEIGHT, DOODLER_WIDTH } from '../../constants.js';
 import { AbstractGameObject } from './AbstractGameObject.js';
-import { Point } from './Point.js';
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
@@ -13,9 +12,9 @@ export class AbstractPlatform extends AbstractGameObject {
         this.LeftBorder = this.CenterPoint.x - PLATFORM_WIDTH / 2;
         this.RightBorder = this.CenterPoint.x + PLATFORM_WIDTH / 2;
     }
-    drawPlatform() {
+    drawPlatform(color) {
         ctx.beginPath();
-        ctx.fillStyle = "green";
-        ctx.fillRect (this.CenterPoint.x - PLATFORM_WIDTH / 2, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH, PLATFORM_HEIGHT);
+        ctx.fillStyle = color;
+        ctx.fillRect (this.CenterPoint.x - PLATFORM_WIDTH / 2 + DOODLER_WIDTH, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH - DOODLER_WIDTH, PLATFORM_HEIGHT);
     }
 }

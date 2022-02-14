@@ -8,7 +8,7 @@ let ctx = canvas.getContext('2d');
 
 export class Doodler extends AbstractMovingGameObject {
     state;
-    previousState;
+    //previousState;
     currentJumpPointsNumber;
     constructor() {
         let point = new Point(CANVAS_WIDTH / 2, 50) // Default spawn point
@@ -26,15 +26,15 @@ export class Doodler extends AbstractMovingGameObject {
         console.log(`doodler jumped to the point (${this.CenterPoint.x}: ${this.CenterPoint.y})`);
     }
     moveDown() {
-        this.CenterPoint.y -= 2;
+        this.CenterPoint.y -= 1;
 
         console.log(`doodler has falled to the point (${this.CenterPoint.x}: ${this.CenterPoint.y})`);
     }
     moveToLeft() {
-        this.CenterPoint.x -= 0.01
+        this.CenterPoint.x -= 0.02
     }
     moveToRight() {
-        this.CenterPoint.x += 0.01
+        this.CenterPoint.x += 0.02
     }
     //TODO:
     // shoot(destination) {
