@@ -4,6 +4,7 @@ import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatfor
 import { FragilePlatform } from "C:/Users/bereg/Documents/web-dev-course-SSU-2021/Task-10_Game/src/js/Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform.js";
 import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
 import { CANVAS_WIDTH, DISTANCE_BETWEEN_PLATFORMS } from "../constants";
+import { MonsterBuilderDirector } from "./Builders/MonsterBuilderDirector";
 
 export function GenerateDoodler() {
     return new Doodler();
@@ -51,6 +52,11 @@ export function GenerateFirstEightDefaultPlatforms() {
     }
 
     return platforms;
+}
+
+export function GenerateRandomMonster() {
+    let monsterDirector = new MonsterBuilderDirector();
+    return monsterDirector.GetNewRandomizedMonster();
 }
 
 export function GetRandomInt(min, max) {
