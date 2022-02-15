@@ -1,6 +1,7 @@
 import { DOODLER_HEIGHT } from "../../../constants";
-import { AbstractState } from "../../../Entities/Abstract/AbstractState";
+import { AbstractState } from '../../../Entities/Abstract/AbstractState';
 import { DoodlerStates } from "../../../Entities/Abstract/Enums/DoodlerStates";
+import { FragilePlatform } from "../../../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
 
 export class Fall extends AbstractState {
     platforms;
@@ -9,7 +10,7 @@ export class Fall extends AbstractState {
         this.platforms = platforms;
     }
     doNow() {
-        this.abstractGameObject.fall(this.platforms);
+        this.abstractGameObject.moveDown(this.platforms);
         this.#doNext();
     }
     #doNext() {
@@ -18,7 +19,7 @@ export class Fall extends AbstractState {
         this.platforms.forEach(platform => {
             if (platform.LeftBorder <= this.abstractGameObject.CenterPoint.x && platform.RightBorder >= this.abstractGameObject.CenterPoint.x) {
                 if (platform.CenterPoint.y == this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT){
-                    isOnSurface = true;
+                    platform instanceof FragilePlatform ? platform.break() : isOnSurface = true;
                 }
             }
         });

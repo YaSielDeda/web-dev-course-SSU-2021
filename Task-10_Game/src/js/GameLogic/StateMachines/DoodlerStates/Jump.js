@@ -8,7 +8,7 @@ export class Jump extends AbstractState {
         super(doodler);
     }
     doNow() {
-        this.abstractGameObject.jump();
+        this.abstractGameObject.moveUp();
         this.#doNext();
     }
     //TODO: add shoot event handler and turn "if" into switch

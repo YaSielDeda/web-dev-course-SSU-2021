@@ -11,9 +11,9 @@ export class AbstractMovingGameObject extends AbstractGameObject {
     this.CenterPoint.x++;
   }
   moveUp() {
-    this.CenterPoint.y += 1;
+    this.CenterPoint.y++;
   }
   moveDown() {
-    this.CenterPoint.y -= 1;
+    this.CenterPoint.y--;
   }
 }

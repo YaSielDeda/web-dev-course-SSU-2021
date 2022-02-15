@@ -121,4 +121,9 @@ module.exports = {
     }),
   ].concat(htmlPluginEntries),
   target: 'web',
+  resolve: {
+    alias: {
+      entities: path.resolve(__dirname, 'src/js/Entities/'),
+    },
+  }
 };
