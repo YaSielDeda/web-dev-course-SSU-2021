@@ -1,7 +1,8 @@
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from '../../constants';
+import { MonsterStateTypes } from '../../Entities/Abstract/Enums/MonsterStateTypes';
 import { Point } from '../../Entities/Abstract/Point';
 import { GetRandomInt } from '../GameObjectsGenerator';
-import { AbstractMonster } from 'C:/Users/bereg/Documents/web-dev-course-SSU-2021/Task-10_Game/src/js/Entities/Abstract/AbstractMonster.js';
+import { AbstractMonster } from '/src/js/Entities/Abstract/AbstractMonster.js';
 
 export class MonsterBuilder {
     constructor(){
@@ -10,6 +11,7 @@ export class MonsterBuilder {
     }
     makeMovable() {
         this.abstractMonster.isMovable = true;
+        this.abstractMonster.state = MonsterStateTypes.MoveLeft;
     }
     makeAttacking() {
         this.abstractMonster.isAttacking = true;

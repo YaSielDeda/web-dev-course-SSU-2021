@@ -1,4 +1,4 @@
-import { DOODLER_HEIGHT } from "../../../constants";
+import { DOODLER_HEIGHT, POSSIBLE_DIAPASONE_BY_Y } from "../../../constants";
 import { AbstractState } from '../../../Entities/Abstract/AbstractState';
 import { DoodlerStates } from "../../../Entities/Abstract/Enums/DoodlerStates";
 import { FragilePlatform } from "../../../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
@@ -17,8 +17,14 @@ export class Fall extends AbstractState {
         let isOnSurface = false;
 
         this.platforms.forEach(platform => {
-            if (platform.LeftBorder <= this.abstractGameObject.CenterPoint.x && platform.RightBorder >= this.abstractGameObject.CenterPoint.x) {
-                if (platform.CenterPoint.y == this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT){
+            /* Checks if doodler in range of some platform by X axis */
+            if (platform.LeftBorder <= this.abstractGameObject.CenterPoint.x &&
+                platform.RightBorder >= this.abstractGameObject.CenterPoint.x) {
+
+                /* Checks if doodler in range of some platform by Y axis */
+                if (platform.CenterPoint.y - POSSIBLE_DIAPASONE_BY_Y <= this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT &&
+                    platform.CenterPoint.y + POSSIBLE_DIAPASONE_BY_Y >= this.abstractGameObject.CenterPoint.y - DOODLER_HEIGHT){
+                        
                     platform instanceof FragilePlatform ? platform.break() : isOnSurface = true;
                 }
             }
