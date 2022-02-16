@@ -12,3 +12,40 @@ canvas {
 html { 
     overflow-y: hidden;
 }
+
+@mixin button-position {
+    transition: all .2s;
+    cursor: pointer;
+    min-height: 10em;
+    position: absolute;
+    top: 45%;
+    left: 40%;
+}
+
+@mixin button-hoover {
+    filter:invert(100%);
+}
+
+.start-game-button {
+    @include button-position();
+    background: url('/src/images/content/start game.png') no-repeat center;
+    width: 400px;
+    height: 100px;
+}
+
+.start-game-button:hover {
+    @include button-hoover();
+}
+
+.retry-button {
+    @include button-position();
+    background: url('/src/images/content/retry.png') no-repeat center;
+    width: 200px;
+    height: 200px;
+    top: 42%;
+    left: 45%;
+}
+
+.retry-button:hover {
+    @include button-hoover();
+}

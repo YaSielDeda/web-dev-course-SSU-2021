@@ -1,5 +1,6 @@
 import { DOODLER_HEIGHT, DOODLER_WIDTH, JUMP_HEIGHT, CANVAS_WIDTH, CANVAS_HEIGHT, DEFAULT_SPAWN_POINT } from '../../constants.js';
 import { AbstractMovingGameObject } from'../Abstract/AbstractMovingGameObject.js';
+import { Point } from '../Abstract/Point.js';
 import { DoodlerStates } from '/src/js/Entities/Abstract/Enums/DoodlerStates.js';
 
 let canvas = document.getElementById('canvas');
@@ -10,7 +11,7 @@ export class Doodler extends AbstractMovingGameObject {
     //previousState;
     currentJumpPointsNumber;
     constructor() {
-        let point = DEFAULT_SPAWN_POINT; // Default spawn point
+        let point = new Point(CANVAS_WIDTH / 2, 50); // Default spawn point
         super(point);
 
         this.currentJumpPointsNumber = 0;

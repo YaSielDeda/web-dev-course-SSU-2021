@@ -1,4 +1,5 @@
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../constants";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, DOODLER_HEIGHT, DOODLER_WIDTH } from "../constants";
+import { DoodlerStates } from "../Entities/Abstract/Enums/DoodlerStates";
 import { Bullet } from "../Entities/MovableObjects/Bullet";
 import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
 import { GenerateDefaultPlatform, GenerateDoodler, GenerateFirstEightDefaultPlatforms, GenerateNotDefaultPlatform, GenerateRandomMonster, GetRandomInt } from "./GameObjectsGenerator";
@@ -10,24 +11,55 @@ import { Vector } from '/src/js/Entities/Abstract/Vector.js';
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-let doodler = GenerateDoodler();
+let doodler;
 
-let platforms = GenerateFirstEightDefaultPlatforms();
+let platforms;
 
-let monsters = [];
+let monsters;
 
-let bullets = [];
+let bullets;
 
-let dodlerStateMachine = new DoodlerStateMachine();
+let dodlerStateMachine;
 
-let monsterStateMachine = new MonsterStateMachine();
+let monsterStateMachine;
 
-let movingPlatformStateMachine = new MovingPlatformStateMachine(); 
+let movingPlatformStateMachine;
 
-requestAnimationFrame(tick);
+/* Start game button */
+let startButton = document.getElementsByClassName("start-game-button")[0];
+startButton.addEventListener('click', init, false);
+
+let retryButton = document.getElementsByClassName("retry-button")[0];
+retryButton.addEventListener('click', init, false);
+retryButton.hidden = true;
+
+function init(){
+    startButton.hidden = true;
+    retryButton.hidden = true;
+
+    doodler = GenerateDoodler();
+
+    platforms = GenerateFirstEightDefaultPlatforms();
+
+    monsters = [];
+
+    bullets = [];
+
+    dodlerStateMachine = new DoodlerStateMachine();
+
+    monsterStateMachine = new MonsterStateMachine();
+
+    movingPlatformStateMachine = new MovingPlatformStateMachine();
+
+    tick();
+}
 
 function tick() {
-    requestAnimationFrame(tick);
+    if (doodler.state !== DoodlerStates.None)
+        requestAnimationFrame(tick);
+    else {
+        retryButton.hidden = false;
+    }
 
     /* CLEAR FIELD */
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -132,6 +164,16 @@ function tick() {
         
         if(indexOfOutOfBoundBullet !== -1)                                                                  
             bullets.splice(indexOfOutOfBoundBullet, 1);
+    });
+
+    bullets.forEach(bullet => {
+        if (bullet.CenterPoint.x >= doodler.CenterPoint.x - DOODLER_WIDTH / 2 && bullet.CenterPoint.x <= doodler.CenterPoint.x + DOODLER_WIDTH / 2){
+            if (bullet.CenterPoint.y >= doodler.CenterPoint.y - DOODLER_HEIGHT / 2 && bullet.CenterPoint.y <= doodler.CenterPoint.y + DOODLER_HEIGHT / 2){
+                doodler.state = DoodlerStates.None;
+                let index = bullets.findIndex(x => x.CenterPoint.x === bullet.CenterPoint.x && x.CenterPoint.y === bullet.CenterPoint.y);
+                bullets.splice(index, 1);
+            }
+        }
     });
     //#endregion
 
