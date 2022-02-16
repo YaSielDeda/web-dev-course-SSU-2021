@@ -2,6 +2,8 @@ import { CANVAS_HEIGHT, CANVAS_WIDTH, DOODLER_HEIGHT, DOODLER_WIDTH } from "../c
 import { DoodlerStates } from "../Entities/Abstract/Enums/DoodlerStates";
 import { Bullet } from "../Entities/MovableObjects/Bullet";
 import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
+import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/DefaultPlatform";
+import { FragilePlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
 import { GenerateDefaultPlatform, GenerateDoodler, GenerateFirstEightDefaultPlatforms, GenerateNotDefaultPlatform, GenerateRandomMonster, GetRandomInt } from "./GameObjectsGenerator";
 import { DoodlerStateMachine } from "./StateMachines/DoodlerStateMachine";
 import { MonsterStateMachine } from "./StateMachines/MonsterStateMachine";
@@ -127,6 +129,10 @@ function tick() {
         /* GENERATING RANDOM MONSTER */
         if(GetRandomInt(1, 1000) === 1){
             let monster = GenerateRandomMonster();
+
+            let number = GetRandomInt(1, 3);
+            monster.numberOfPic = number;
+
             monsters.push(monster);
         }
     }
@@ -179,16 +185,33 @@ function tick() {
 
     /* OBJECTS RENDERING */
     monsters.forEach(monster => {
-        monster.draw('red');
+        if(monster.isMovable) {
+            monster.draw(`moving monster ${monster.numberOfPic}.png`)
+        }
+        else {
+            monster.draw(`static monster ${number.numberOfPic}.png`)
+        }
     });
 
     platforms.forEach(platform => {
-        platform.draw(platform.color);
+        switch (platform.color) {
+            case "green":
+                platform.draw("platform.png");
+                break;
+            case "blue":
+                platform.draw("moving platform.png");
+                break;
+            case "bisque":
+                platform.draw("fragile platform.png");
+                break;
+            default:
+                break;
+        }
     });
 
     bullets.forEach(bullet => {
         bullet.draw();
     });
 
-    doodler.drawDoodler();
+    doodler.draw("default.png");
 };

@@ -8,7 +8,6 @@ let ctx = canvas.getContext('2d');
 
 export class Doodler extends AbstractMovingGameObject {
     state;
-    //previousState;
     currentJumpPointsNumber;
     constructor() {
         let point = new Point(CANVAS_WIDTH / 2, 50); // Default spawn point
@@ -40,9 +39,15 @@ export class Doodler extends AbstractMovingGameObject {
     // shoot(destination) {
 
     // }
-    drawDoodler() {
-        ctx.beginPath();
-        ctx.fillStyle = "violet";
-        ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, DOODLER_WIDTH, DOODLER_HEIGHT);
+    draw(skinName) {
+        // ctx.beginPath();
+        // ctx.fillStyle = "violet";
+        // ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, DOODLER_WIDTH, DOODLER_HEIGHT);
+
+        var img = new Image();
+
+        img.src = "./images/content/sprites/skins/" + skinName;
+
+        ctx.drawImage(img, this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, DOODLER_WIDTH, DOODLER_HEIGHT);
     }
 }

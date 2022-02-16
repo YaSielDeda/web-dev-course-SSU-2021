@@ -6,14 +6,14 @@ export const CANVAS_WIDTH = 800;
 
 /* Doodler constants */
 export const JUMP_HEIGHT = 150;
-export const DOODLER_WIDTH = 60;
-export const DOODLER_HEIGHT = 80;
+export const DOODLER_WIDTH = 100;
+export const DOODLER_HEIGHT = 100;
 
 export const DEFAULT_SPAWN_POINT = new Point(CANVAS_WIDTH / 2, 50);
 
 /* Platform constants */
-export const PLATFORM_WIDTH = 300;
-export const PLATFORM_HEIGHT = 40;
+export const PLATFORM_WIDTH = 290;
+export const PLATFORM_HEIGHT = 60;
 export const DISTANCE_BETWEEN_PLATFORMS = 120;
 
 /// This const needs for correct doodler bouncing,
@@ -22,8 +22,8 @@ export const DISTANCE_BETWEEN_PLATFORMS = 120;
 export const POSSIBLE_DIAPASONE_BY_Y = 3;
 
 /* Monster constants */
-export const MONSTER_WIDTH = 90;
-export const MONSTER_HEIGHT = 80;
+export const MONSTER_WIDTH = 120;
+export const MONSTER_HEIGHT = 120;
 export const MONSTER_MOVEMENT_DIAPASON = 100;
 
 /* Bullet constants */

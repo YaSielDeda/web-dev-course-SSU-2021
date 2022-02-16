@@ -10,14 +10,20 @@ export class AbstractMonster extends AbstractMovingGameObject {
     isAttacking = false;
     state;
     SpawnPoint;
+    numperOfPic;
     constructor(CenterPoint) {
         super(CenterPoint);
         this.SpawnPoint = new Point(CenterPoint.x, CenterPoint.y);
     }
-    //TODO: different proportions for different types of enemies
-    draw(color) {
-        ctx.beginPath();
-        ctx.fillStyle = color;
-        ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, MONSTER_WIDTH, MONSTER_HEIGHT);
+    draw(name) {
+        // ctx.beginPath();
+        // ctx.fillStyle = color;
+        // ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, MONSTER_WIDTH, MONSTER_HEIGHT);
+
+        var img = new Image();
+
+        img.src = "./images/content/sprites/monsters/" + name;
+
+        ctx.drawImage(img, this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, MONSTER_WIDTH, MONSTER_HEIGHT);
     }
 }
