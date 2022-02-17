@@ -17,7 +17,7 @@ export class AbstractPlatform extends AbstractGameObject {
         // ctx.fillStyle = color;
         // ctx.fillRect (this.CenterPoint.x - PLATFORM_WIDTH / 2 + DOODLER_WIDTH, CANVAS_HEIGHT - this.CenterPoint.y, PLATFORM_WIDTH - DOODLER_WIDTH, PLATFORM_HEIGHT);
 
-        var img = new Image();
+        let img = new Image();
 
         img.src = "./images/content/sprites/platforms/" + platformName;
 

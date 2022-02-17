@@ -27,6 +27,11 @@ let monsterStateMachine;
 
 let movingPlatformStateMachine;
 
+// localStorage.setItem('highscore', 0);
+
+let score;
+let highscore;
+
 /* Start game button */
 let startButton = document.getElementsByClassName("start-game-button")[0];
 startButton.addEventListener('click', init, false);
@@ -34,6 +39,9 @@ startButton.addEventListener('click', init, false);
 let retryButton = document.getElementsByClassName("retry-button")[0];
 retryButton.addEventListener('click', init, false);
 retryButton.hidden = true;
+
+// let font = new FontFace('Gagalin', 'url(/src/fonts/Gagalin-Regular.otf)');
+// document.fonts.add(font);
 
 function init(){
     startButton.hidden = true;
@@ -53,6 +61,10 @@ function init(){
 
     movingPlatformStateMachine = new MovingPlatformStateMachine();
 
+    score = 0;
+
+    highscore = localStorage.getItem('highscore');
+
     tick();
 }
 
@@ -61,6 +73,8 @@ function tick() {
         requestAnimationFrame(tick);
     else {
         retryButton.hidden = false;
+        if (highscore < score)
+        localStorage.setItem('highscore', score);
     }
 
     /* CLEAR FIELD */
@@ -81,6 +95,7 @@ function tick() {
 
     //#region PLATFORMS
     if (doodler.CenterPoint.y >= CANVAS_HEIGHT / 2) {
+        score++;
         platforms.forEach(platform => {
             platform.CenterPoint.y--;
         });
@@ -189,7 +204,7 @@ function tick() {
             monster.draw(`moving monster ${monster.numberOfPic}.png`)
         }
         else {
-            monster.draw(`static monster ${number.numberOfPic}.png`)
+            monster.draw(`static monster ${monster.numberOfPic}.png`)
         }
     });
 
@@ -214,4 +229,10 @@ function tick() {
     });
 
     doodler.draw("default.png");
+
+    ctx.font = "30px Gagalin";
+    ctx.fillText(score, CANVAS_WIDTH - 70, CANVAS_HEIGHT - 50);
+
+    ctx.font = "30px Gagalin";
+    ctx.fillText(highscore, CANVAS_WIDTH - 70, CANVAS_HEIGHT - 20);
 };

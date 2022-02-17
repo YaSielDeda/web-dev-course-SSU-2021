@@ -44,7 +44,7 @@ export class Doodler extends AbstractMovingGameObject {
         // ctx.fillStyle = "violet";
         // ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, DOODLER_WIDTH, DOODLER_HEIGHT);
 
-        var img = new Image();
+        let img = new Image();
 
         img.src = "./images/content/sprites/skins/" + skinName;
 

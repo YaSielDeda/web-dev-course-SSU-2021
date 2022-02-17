@@ -10,7 +10,7 @@ export class AbstractMonster extends AbstractMovingGameObject {
     isAttacking = false;
     state;
     SpawnPoint;
-    numperOfPic;
+    numberOfPic;
     constructor(CenterPoint) {
         super(CenterPoint);
         this.SpawnPoint = new Point(CenterPoint.x, CenterPoint.y);
@@ -20,7 +20,7 @@ export class AbstractMonster extends AbstractMovingGameObject {
         // ctx.fillStyle = color;
         // ctx.fillRect (this.CenterPoint.x, CANVAS_HEIGHT - this.CenterPoint.y, MONSTER_WIDTH, MONSTER_HEIGHT);
 
-        var img = new Image();
+        let img = new Image();
 
         img.src = "./images/content/sprites/monsters/" + name;
 

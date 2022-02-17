@@ -24,6 +24,11 @@ const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin(
 }));
 
 module.exports = {
+  resolve: {
+    alias: {
+      entities: path.resolve(__dirname, 'src/js/Entities/'),
+    },
+  },
   entry: {
     app: path.resolve(environment.paths.source, 'js', 'app.js'),
   },
@@ -121,9 +126,4 @@ module.exports = {
     }),
   ].concat(htmlPluginEntries),
   target: 'web',
-  resolve: {
-    alias: {
-      entities: path.resolve(__dirname, 'src/js/Entities/'),
-    },
-  }
 };

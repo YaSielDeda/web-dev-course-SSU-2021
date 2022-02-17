@@ -1,5 +1,6 @@
 body {
     background-image: url("/src/images/content/background.jpg");
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 canvas {
@@ -16,7 +17,7 @@ html {
 @mixin button-position {
     transition: all .2s;
     cursor: pointer;
-    min-height: 10em;
+    min-height: 200px;
     position: absolute;
     top: 45%;
     left: 40%;
