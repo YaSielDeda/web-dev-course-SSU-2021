@@ -16,7 +16,7 @@ Main character of the game, which player takes control. It's always jumping, and
 It's a only solid sufrace in game, which doodler can use to climb higher. This game will be contains at least 3 platform types from the original game:
 * [x] **_Default_** (green) platform - Doodler can jump on it endlessly.
 * [x] **_Moving_** (blue) platform - This type of platforms moves horrizontally.
-* [x] **_Fragile_** (white) platfrom - It's crushes as doodler is stepping on it.
+* [x] **_Fragile_** (brown) platfrom - It's crushes as doodler is stepping on it.
 
 ### *Monsters*
 It's a doodler enemies, upon contact with them doodler falls and game over then, so you need to beware of them. Some of monsters are static and just stay at the one point, some of them are dynamic and can move through game field. Also, some of monsters can try to attack doodler, they also can shoot as doodler, as for example.
