@@ -1,7 +1,7 @@
 import { Doodler } from "../Entities/MovableObjects/Doodler";
 import { Point } from "../Entities/Abstract/Point";
 import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/DefaultPlatform";
-import { FragilePlatform } from "C:/Users/bereg/Documents/web-dev-course-SSU-2021/Task-10_Game/src/js/Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform.js";
+import { FragilePlatform } from "/src/js/Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform.js";
 import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
 import { CANVAS_WIDTH, DISTANCE_BETWEEN_PLATFORMS } from "../constants";
 import { MonsterBuilderDirector } from "./Builders/MonsterBuilderDirector";

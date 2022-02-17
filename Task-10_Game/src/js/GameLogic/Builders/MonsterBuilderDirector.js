@@ -5,7 +5,7 @@ export class MonsterBuilderDirector {
     GetNewRandomizedMonster() {
         let monsterBuilder = new MonsterBuilder();
         
-        if(GetRandomInt(1, 2) == 1)
+        if(GetRandomInt(1, 2) == 1){}
             monsterBuilder.makeMovable();
 
         if(GetRandomInt(1, 2) == 1)

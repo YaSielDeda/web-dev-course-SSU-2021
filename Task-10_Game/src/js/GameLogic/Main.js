@@ -1,26 +1,67 @@
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../constants";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, DOODLER_HEIGHT, DOODLER_WIDTH } from "../constants";
+import { DoodlerStates } from "../Entities/Abstract/Enums/DoodlerStates";
+import { Bullet } from "../Entities/MovableObjects/Bullet";
 import { MovingPlatform } from "../Entities/MovableObjects/MovablePlatforms/MovingPlatform";
+import { DefaultPlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/DefaultPlatform";
+import { FragilePlatform } from "../Entities/NonMovableObjects/NonMovablePlatforms/FragilePlatform";
 import { GenerateDefaultPlatform, GenerateDoodler, GenerateFirstEightDefaultPlatforms, GenerateNotDefaultPlatform, GenerateRandomMonster, GetRandomInt } from "./GameObjectsGenerator";
 import { DoodlerStateMachine } from "./StateMachines/DoodlerStateMachine";
+import { MonsterStateMachine } from "./StateMachines/MonsterStateMachine";
 import { MovingPlatformStateMachine } from "./StateMachines/MovingPlatformStateMachine";
+import { Vector } from '/src/js/Entities/Abstract/Vector.js';
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-let doodler = GenerateDoodler();
+let doodler;
 
-let platforms = GenerateFirstEightDefaultPlatforms();
+let platforms;
 
-let monsters = [];
+let monsters;
 
-let dodlerStateMachine = new DoodlerStateMachine();
+let bullets;
 
-let movingPlatformStateMachine = new MovingPlatformStateMachine(); 
+let dodlerStateMachine;
 
-requestAnimationFrame(tick);
+let monsterStateMachine;
+
+let movingPlatformStateMachine;
+
+/* Start game button */
+let startButton = document.getElementsByClassName("start-game-button")[0];
+startButton.addEventListener('click', init, false);
+
+let retryButton = document.getElementsByClassName("retry-button")[0];
+retryButton.addEventListener('click', init, false);
+retryButton.hidden = true;
+
+function init(){
+    startButton.hidden = true;
+    retryButton.hidden = true;
+
+    doodler = GenerateDoodler();
+
+    platforms = GenerateFirstEightDefaultPlatforms();
+
+    monsters = [];
+
+    bullets = [];
+
+    dodlerStateMachine = new DoodlerStateMachine();
+
+    monsterStateMachine = new MonsterStateMachine();
+
+    movingPlatformStateMachine = new MovingPlatformStateMachine();
+
+    tick();
+}
 
 function tick() {
-    requestAnimationFrame(tick);
+    if (doodler.state !== DoodlerStates.None)
+        requestAnimationFrame(tick);
+    else {
+        retryButton.hidden = false;
+    }
 
     /* CLEAR FIELD */
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -29,6 +70,13 @@ function tick() {
 
     //#region DOODLER
     dodlerStateMachine.DoCurrentStateLogic(doodler, platforms)
+
+    /* ADD NEW BULLET */
+    // document.addEventListener('click', logKey);
+
+    // function logKey(e) {
+    //     console.log(`Screen X/Y: ${e.screenX}, ${e.screenY}`);
+    // }
     //#endregion
 
     //#region PLATFORMS
@@ -46,7 +94,7 @@ function tick() {
             platforms.push(newPlatform);
 
             /* GENERATING RANDOM PLATFORM */
-            if(GetRandomInt(1, 2) == 1){
+            if(GetRandomInt(1, 2) === 1){
                 let notDefaultPlatform = GenerateNotDefaultPlatform(platforms[platforms.length -2].CenterPoint.y);
                 platforms.push(notDefaultPlatform);
             }
@@ -73,29 +121,97 @@ function tick() {
             monster.CenterPoint.y--;
         });
 
+        /* DELETING FROM THE CANVAS LOWER THAN LOWER BOUND MONSTERS */
         let indexOfOutOfBoundMonster = monsters.findIndex(monster => monster.CenterPoint.y <= 0);
-        monsters.splice(indexOfOutOfBoundMonster, 1);
+        if (indexOfOutOfBoundMonster !== -1)
+            monsters.splice(indexOfOutOfBoundMonster, 1);
 
-        if(GetRandomInt(1, 1000) == 1){
+        /* GENERATING RANDOM MONSTER */
+        if(GetRandomInt(1, 1000) === 1){
             let monster = GenerateRandomMonster();
+
+            let number = GetRandomInt(1, 3);
+            monster.numberOfPic = number;
+
             monsters.push(monster);
         }
     }
 
-    // monsters.forEach(monster => {
-    //     if
-    // });
+    /* Shooting at the doodler */
+    if(monsters.length > 0){
+        if(GetRandomInt(1, 100) === 1) {
+            let index = GetRandomInt(0, monsters.length - 1);
+
+            let bullet = new Bullet(monsters[index].CenterPoint);
+
+            let vector = new Vector(doodler.CenterPoint.x - monsters[index].CenterPoint.x,
+                                    doodler.CenterPoint.y - monsters[index].CenterPoint.y);
+            
+            bullet.AddVector(vector);
+            bullet.Normalize();
+            bullets.push(bullet);
+        }
+    }
+
+    monsters.forEach(monster => {
+        if(monster.isMovable || monster.isAttacking)
+            monsterStateMachine.DoCurrentStateLogic(monster, bullets);
+    });
+    //#endregion
+
+    //#region BULLETS
+    bullets.forEach(bullet => {
+        bullet.Move();
+    });
+
+    bullets.forEach(bullet => {
+        let indexOfOutOfBoundBullet = bullets.findIndex(bullet => bullet.CenterPoint.x <= 0 || bullet.CenterPoint.x >= CANVAS_WIDTH ||
+                                                                  bullet.CenterPoint.y <= 0 || bullet.CenterPoint.y >= CANVAS_HEIGHT);
+        
+        if(indexOfOutOfBoundBullet !== -1)                                                                  
+            bullets.splice(indexOfOutOfBoundBullet, 1);
+    });
+
+    bullets.forEach(bullet => {
+        if (bullet.CenterPoint.x >= doodler.CenterPoint.x - DOODLER_WIDTH / 2 && bullet.CenterPoint.x <= doodler.CenterPoint.x + DOODLER_WIDTH / 2){
+            if (bullet.CenterPoint.y >= doodler.CenterPoint.y - DOODLER_HEIGHT / 2 && bullet.CenterPoint.y <= doodler.CenterPoint.y + DOODLER_HEIGHT / 2){
+                doodler.state = DoodlerStates.None;
+                let index = bullets.findIndex(x => x.CenterPoint.x === bullet.CenterPoint.x && x.CenterPoint.y === bullet.CenterPoint.y);
+                bullets.splice(index, 1);
+            }
+        }
+    });
     //#endregion
 
     /* OBJECTS RENDERING */
-    platforms.forEach(platform => {
-        platform.drawPlatform(platform.color);
-    });
-
-
     monsters.forEach(monster => {
-        monster.drawMonster('red');
+        if(monster.isMovable) {
+            monster.draw(`moving monster ${monster.numberOfPic}.png`)
+        }
+        else {
+            monster.draw(`static monster ${number.numberOfPic}.png`)
+        }
     });
 
-    doodler.drawDoodler();
+    platforms.forEach(platform => {
+        switch (platform.color) {
+            case "green":
+                platform.draw("platform.png");
+                break;
+            case "blue":
+                platform.draw("moving platform.png");
+                break;
+            case "bisque":
+                platform.draw("fragile platform.png");
+                break;
+            default:
+                break;
+        }
+    });
+
+    bullets.forEach(bullet => {
+        bullet.draw();
+    });
+
+    doodler.draw("default.png");
 };
